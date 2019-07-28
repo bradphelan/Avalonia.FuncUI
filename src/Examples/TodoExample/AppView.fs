@@ -142,9 +142,8 @@ module AppView =
                     Attrs.onClick (fun sender _ -> 
                         dispatch (Check (entry.id, (sender :?> CheckBox).IsChecked.GetValueOrDefault()))
                     )
-                ]            
+                ]
 
-                
                 yield iconButton Icons.edit [
                     Attrs.dockPanel_dock Dock.Right
                     Attrs.width 32.0
@@ -153,6 +152,15 @@ module AppView =
                         dispatch (EditingEntry entry.id)
                     )
                     Attrs.isVisible (not entry.editing)
+                ]
+
+                yield iconButton Icons.delete [
+                    Attrs.dockPanel_dock Dock.Right
+                    Attrs.width 32.0
+                    Attrs.height 32.0
+                    Attrs.onClick (fun _ __ -> 
+                        dispatch (Delete entry.id)
+                    )
                 ]
 
                 match entry.editing with
