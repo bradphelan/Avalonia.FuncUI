@@ -256,7 +256,13 @@ module AppView =
                     Attrs.dockPanel_dock Dock.Top
                     Attrs.orientation Orientation.Vertical
                     Attrs.children [
-                        for entry in state.entries do
+                        let entries =
+                            match state.filter with
+                            | All -> state.entries
+                            | Completed -> state.entries |> List.filter (fun item -> item.complete)
+                            | Active -> state.entries |> List.filter (fun item -> not item.complete)
+
+                        for entry in entries do
                             yield viewEntry entry dispatch
                     ]
                 ]

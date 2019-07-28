@@ -20,6 +20,7 @@ type App() =
     override this.Initialize() =
         this.Styles.Load "resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default"
         this.Styles.Load "resm:Avalonia.Themes.Default.Accents.BaseDark.xaml?assembly=Avalonia.Themes.Default"
+        this.Styles.Load "avares://TodoExample/Assets/Styles.xaml"
 
 module Program =
     open Avalonia
